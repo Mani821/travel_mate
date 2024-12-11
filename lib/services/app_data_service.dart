@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+
 class AppData {
   AppData();
 
@@ -31,4 +35,42 @@ class AppData {
         return 'Your perfect travel companion for unforgettable adventures and seamless journeys. Never explore alone again!';
     }
   }
+
+
+
+  // Method to show the loading dialog
+  static void showLoading(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 2.6, sigmaY:2.6),
+          child: Dialog(
+            insetPadding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.4,
+                vertical: MediaQuery.of(context).size.height * 0.410),
+            backgroundColor: Colors.transparent,
+            child: const Center(
+                child: SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(
+                    strokeCap: StrokeCap.round,
+                    color: Colors.white,
+                  ),
+                )),
+          ),
+        );
+      },
+    );
+  }
+
+
+  // Method to hide the loading dialog
+  static void hideLoading(BuildContext context) {
+    Navigator.of(context, rootNavigator: true).pop(); // Dismiss the dialog
+  }
+
+
 }

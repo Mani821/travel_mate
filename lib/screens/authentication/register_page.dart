@@ -1,12 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:travel_companion/core/utils/nav_manager.dart';
 import 'package:travel_companion/screens/authentication/login_page.dart';
+import 'package:travel_companion/services/app_data_service.dart';
+import 'package:travel_companion/services/location_service.dart';
 import 'package:travel_companion/widgets/buttons/custom_button.dart';
 import 'package:travel_companion/widgets/custom_textfield.dart';
-import 'package:travel_companion/widgets/dialogs/custom_dialog.dart';
 import '../../core/constants.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -86,7 +86,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: locationController,
                 hint: 'Enter your location',
                 readOnly: true,
-                onTap: ()async {
+                onTap: () async {
+                  final loc = await getUserLocation();
+                  locationController.text = loc;
                   // MyDialog.show(
                   //   context: context,
                   //   onTap: () {},
@@ -121,5 +123,17 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
+  }
+
+  Future getUserLocation() async {
+    AppData.showLoading(context);
+    final result = await LocationService().getUserLocation();
+    result.fold((failure) {
+      AppData.hideLoading(context);
+      debugPrint(failure.message);
+    }, (success) {
+      AppData.hideLoading(context);
+      debugPrint(success.toString());
+    });
   }
 }

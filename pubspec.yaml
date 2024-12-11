@@ -43,6 +43,7 @@ dependencies:
   flutter_svg: ^2.0.16
   geolocator: ^13.0.2
   geocoding: ^3.0.0
+  fpdart: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+  change_app_package_name: ^1.4.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

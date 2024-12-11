@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:travel_companion/core/utils/nav_manager.dart';
 import 'package:travel_companion/screens/authentication/forgot_pass_page.dart';
 import 'package:travel_companion/screens/authentication/register_page.dart';
+import 'package:travel_companion/screens/home/home_page.dart';
 import 'package:travel_companion/widgets/buttons/custom_button.dart';
 import 'package:travel_companion/widgets/custom_textfield.dart';
 import '../../core/constants.dart';
@@ -79,7 +80,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              CustomButton(text: "Sign In", onPressed: () {}),
+              CustomButton(text: "Sign In", onPressed: () {
+                NavManager.gotoAndRemoveAllPrevious(const HomePage());
+              }),
               Text.rich(
                 TextSpan(
                   text: 'Don\'t have an account? ',

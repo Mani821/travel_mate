@@ -26,8 +26,8 @@ class AuthenticationHandler extends StatelessWidget {
                   tag: 'auth',
                   child: Image.asset(
                     'assets/images/appIcon.png',
-                    height: 320,
-                    width: 320,
+                    height: 340,
+                    width: 340,
                   )),
             ),
             const Spacer(),
