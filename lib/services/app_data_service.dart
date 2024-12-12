@@ -21,6 +21,13 @@ class AppData {
     }
   }
 
+  static List<String> headings = [
+    "Popular Hotels",
+    'Popular Restaurants',
+    'Nearby Events',
+    'Your favorites',
+  ];
+
   static String getOnboardingText(int pageIndex) {
     switch (pageIndex) {
       case 0:
@@ -35,6 +42,22 @@ class AppData {
         return 'Your perfect travel companion for unforgettable adventures and seamless journeys. Never explore alone again!';
     }
   }
+
+  static List<MainMenuItem> categories = [
+    MainMenuItem(title: 'Hotels', icon: 'assets/icons/hotel.svg'),
+    MainMenuItem(title: 'Restaurants', icon: 'assets/icons/restaurant.svg'),
+    MainMenuItem(title: 'Events', icon: 'assets/icons/events.svg'),
+    MainMenuItem(title: 'Favorite', icon: 'assets/icons/favLocations.svg'),
+  ];
+
+
+
+  static BoxShadow get boxShadow => BoxShadow(
+    color: Colors.grey.withOpacity(0.3),
+    spreadRadius: 1,
+    blurRadius: 10,
+    offset: const Offset(0, 3),
+  );
 
 
 
@@ -73,4 +96,12 @@ class AppData {
   }
 
 
+}
+
+
+class MainMenuItem{
+  final String title;
+  final String icon;
+
+  MainMenuItem({required this.title, required this.icon});
 }
