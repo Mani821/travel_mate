@@ -18,8 +18,9 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     Future.delayed(2.seconds, () {
       bool onBoardingShown = prefs.getBool('onBoardingShown') ?? false;
-      NavManager.gotoAndRemoveAllPrevious(
-          onBoardingShown ? const AuthenticationHandler() : const OnBoardingHandler());
+      NavManager.gotoAndRemoveAllPrevious(onBoardingShown
+          ? const AuthenticationHandler()
+          : const OnBoardingHandler());
     });
     super.initState();
   }
@@ -36,10 +37,13 @@ class _SplashPageState extends State<SplashPage> {
       child: Scaffold(
         body: Center(
           child:
-              Image.asset('assets/images/appIcon.png').animate().fade().scale(
-                    curve: Curves.elasticOut,
-                    duration: 1400.ms,
-                  ),
+              Hero(
+                tag: "auth",
+                child: Image.asset('assets/images/appIcon.png').animate().fade().scale(
+                      curve: Curves.elasticOut,
+                      duration: 1400.ms,
+                    ),
+              ),
         ),
       ),
     );

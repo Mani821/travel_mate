@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../core/constants.dart';
 
 class CustomButton extends StatelessWidget {
@@ -25,7 +24,10 @@ class CustomButton extends StatelessWidget {
               onPressed: onPressed,
               child: Text(
                 text,
-                style: GoogleFonts.lexend(fontWeight: FontWeight.w500),
+                style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Lexend',
+                ),
               ),
             ),
           ),

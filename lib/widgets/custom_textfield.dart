@@ -2,10 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../core/constants.dart';
 
-class MyTextField extends StatelessWidget {
+class MyTextField extends StatefulWidget {
   final TextEditingController controller;
   final String hint;
   final int? maxLines;
@@ -24,92 +23,110 @@ class MyTextField extends StatelessWidget {
   final IconData prefixIconData;
   final FocusNode? focusNode;
   final TextInputAction? textInputAction;
+  final String? Function(String?)? validator;
 
+  const MyTextField(
+      {super.key,
+        required this.controller,
+        this.hint = "Enter text",
+        this.maxLines = 1,
+        this.minLines = 1,
+        this.keyboardType,
+        this.enabled = true,
+        this.onTap,
+        this.readOnly = false,
+        this.onSuffixTap,
+        this.prefixIcon = false,
+        this.obSecureText = false,
+        this.isPasswordField = false,
+        this.onChanged,
+        this.capitalization = TextCapitalization.none,
+        this.inputFormatters,
+        this.prefixIconData = CupertinoIcons.search,
+        this.focusNode,
+        this.textInputAction,
+        this.validator});
 
-  const MyTextField({
-    super.key,
-    required this.controller,
-    this.hint = "Enter text",
-    this.maxLines = 1,
-    this.minLines = 1,
-    this.keyboardType,
-    this.enabled = true,
-    this.onTap,
-    this.readOnly = false,
-    this.onSuffixTap,
-    this.prefixIcon = false,
-    this.obSecureText = false,
-    this.isPasswordField = false,
-    this.onChanged,
-    this.capitalization = TextCapitalization.none,
-    this.inputFormatters,
-    this.prefixIconData = CupertinoIcons.search,
-    this.focusNode,
-    this.textInputAction,
+  @override
+  State<MyTextField> createState() => _MyTextFieldState();
+}
 
-  });
+class _MyTextFieldState extends State<MyTextField> {
+  @override
+  void initState() {
+    widget.controller.addListener(() {
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
-      child: CupertinoTextField(
-        inputFormatters: inputFormatters,
-        onTap: onTap,
-        controller: controller,
-        onChanged: onChanged,
-        focusNode: focusNode,
-        textInputAction: textInputAction,
-        style: GoogleFonts.lexend(color: Colors.black,fontSize: 14),
-        placeholderStyle: GoogleFonts.lexend(color: CupertinoColors.systemGrey,fontSize: 14),
-        prefix: prefixIcon ? Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: Icon(
-            prefixIconData,
-            color: hintColor,
+      child: TextFormField(
+        inputFormatters: widget.inputFormatters,
+        onTap: widget.onTap,
+        controller: widget.controller,
+        onChanged: widget.onChanged,
+        focusNode: widget.focusNode,
+        textInputAction: widget.textInputAction,
+        validator: widget.validator,
+        style: GoogleFonts.lexend(
+            color: Colors.black,
+            fontSize: 14),
+        decoration: InputDecoration(
+          suffixIcon: widget.isPasswordField
+              ? IconButton(
+            onPressed: () {
+              widget.onSuffixTap!(widget.obSecureText);
+            },
+            icon: Icon(
+              widget.obSecureText
+                  ? Icons.visibility_off_rounded
+                  : Icons.visibility_rounded,
+              color: Colors.grey[400],
+              size: 19,
+            ),
+          )
+              : widget.controller.text.isNotEmpty
+              ? IconButton(
+              onPressed: () {
+                widget.controller.clear();
+              },
+              icon: Icon(
+                CupertinoIcons.clear_thick_circled,
+                color: Colors.grey[500],
+                size: 20,
+              ))
+              : null,
+          hintText: widget.hint,
+          hintStyle: TextStyle(
+            color: Colors.grey[500],
+            fontFamily: 'Lexend',
+            fontSize: 12,
           ),
-        ) : null,
-        suffix: isPasswordField ? IconButton(
-          onPressed: () {
-            if (onSuffixTap != null) {
-              onSuffixTap!(true);
-            }
-          },
-          icon: Icon(
-            obSecureText ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-            size: 20,
-            color: hintColor,
+          errorStyle: GoogleFonts.lexend(color: Colors.red, fontSize: 12),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
           ),
-        )  : IconButton(
-          onPressed: () {
-            controller.clear();
-            if (onSuffixTap != null) {
-              onSuffixTap!(true);
-            }
-          },
-          icon: Icon(
-            CupertinoIcons.xmark_circle_fill,
-            size: 20,
-            color: hintColor,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: primaryColor),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: Colors.red),
           ),
         ),
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: hintColor),
-        ),
-        keyboardType: keyboardType,
-        maxLines: maxLines,
-
-        textCapitalization: capitalization,
+        keyboardType: widget.keyboardType,
+        maxLines: widget.maxLines,
+        textCapitalization: widget.capitalization,
         cursorColor: primaryColor,
-        suffixMode: OverlayVisibilityMode.editing,
-        padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 8),
-        placeholder: hint,
-        obscureText: obSecureText,
-        enabled: enabled,
-        readOnly: readOnly,
-        minLines: minLines,
+        obscureText: widget.obSecureText,
+        enabled: widget.enabled,
+        readOnly: widget.readOnly,
+        minLines: widget.minLines,
       ),
     );
   }

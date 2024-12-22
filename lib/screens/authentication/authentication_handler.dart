@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:travel_companion/core/utils/nav_manager.dart';
 import 'package:travel_companion/screens/authentication/login_page.dart';
 import 'package:travel_companion/screens/authentication/register_page.dart';
@@ -10,37 +11,44 @@ class AuthenticationHandler extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/auth_bg.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 40.0),
-              child: Hero(
-                  tag: 'auth',
-                  child: Image.asset(
-                    'assets/images/appIcon.png',
-                    height: 340,
-                    width: 340,
-                  )),
+    return AnnotatedRegion(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: Colors.transparent
+      ),
+      child: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/auth_bg.png'),
+              fit: BoxFit.cover,
             ),
-            const Spacer(),
-            CustomButton(
-                text: 'Sign In',
-                onPressed: () {
-                  NavManager.goTo(const LoginPage());
-                }),
-            CustomOutlineButton(text: 'Sign Up', onPressed: () {
-              NavManager.goTo(const RegisterPage());
-            }),
-            const SizedBox(height: 20),
-          ],
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0),
+                child: Hero(
+                    tag: 'auth',
+                    child: Image.asset(
+                      'assets/images/appIcon.png',
+                      height: 340,
+                      width: 340,
+                    )),
+              ),
+              const Spacer(),
+              CustomButton(
+                  text: 'Sign In',
+                  onPressed: () {
+                    NavManager.goTo(const LoginPage());
+                  }),
+              CustomOutlineButton(text: 'Sign Up', onPressed: () {
+                NavManager.goTo(const RegisterPage());
+              }),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );

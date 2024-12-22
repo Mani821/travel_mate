@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppData {
   AppData();
@@ -45,18 +46,19 @@ class AppData {
 
   static List<MainMenuItem> categories = [
     MainMenuItem(title: 'Hotels', icon: 'assets/icons/hotel.svg'),
+    MainMenuItem(title: 'Flights', icon: 'assets/icons/travel.svg'),
     MainMenuItem(title: 'Restaurants', icon: 'assets/icons/restaurant.svg'),
     MainMenuItem(title: 'Events', icon: 'assets/icons/events.svg'),
-    MainMenuItem(title: 'Favorite', icon: 'assets/icons/favLocations.svg'),
+
   ];
 
 
 
   static BoxShadow get boxShadow => BoxShadow(
-    color: Colors.grey.withOpacity(0.3),
+    color: Colors.black.withOpacity(0.3),
     spreadRadius: 1,
     blurRadius: 10,
-    offset: const Offset(0, 3),
+    offset: const Offset(0, 2),
   );
 
 
@@ -93,6 +95,55 @@ class AppData {
   // Method to hide the loading dialog
   static void hideLoading(BuildContext context) {
     Navigator.of(context, rootNavigator: true).pop(); // Dismiss the dialog
+  }
+
+  static void hideSnackBar(BuildContext context) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+  }
+
+  static void showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      elevation: 0,
+      backgroundColor: Colors.red,
+      content: Text(
+        message,
+        style: GoogleFonts.lexend(fontWeight: FontWeight.w500),
+      ),
+      duration: const Duration(milliseconds: 1500),
+    ));
+  }
+
+  static void showSuccessSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      elevation: 0,
+      backgroundColor: Colors.green,
+      content: Row(
+        children: [
+          const Icon(
+            Icons.check,
+            color: Colors.white,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Text(
+            message,
+            style: GoogleFonts.lexend(fontWeight: FontWeight.w500),
+          ),
+        ],
+      ),
+      duration: const Duration(milliseconds: 1500),
+    ));
   }
 
 

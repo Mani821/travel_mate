@@ -50,13 +50,13 @@ class AppTheme {
             shape: WidgetStatePropertyAll(
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
           )),
-      scaffoldBackgroundColor: Colors.white,
+      scaffoldBackgroundColor: const Color(0xFFF6F8F9),
       listTileTheme: ListTileThemeData(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       ),
       appBarTheme: AppBarTheme(
           scrolledUnderElevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: const Color(0xFFF6F8F9),
           elevation: 0,
           centerTitle: true,
           systemOverlayStyle:  SystemUiOverlayStyle(
@@ -73,6 +73,14 @@ class AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
+      ),
+      tabBarTheme: TabBarTheme(
+        indicatorSize: TabBarIndicatorSize.label,
+        indicatorColor: primaryColor,
+        unselectedLabelColor: Colors.grey[600],
+        labelColor: primaryColor,
+        dividerColor: Colors.transparent,
+        dividerHeight: 0
       ),
       expansionTileTheme: ExpansionTileThemeData(
         shape: RoundedRectangleBorder(

@@ -8,7 +8,7 @@ import 'package:travel_companion/services/app_data_service.dart';
 import '../../core/constants.dart';
 import '../../core/utils/nav_manager.dart';
 import '../../main.dart';
-import '../home/home_page.dart';
+import '../view_handler/main_view_handler.dart';
 
 class OnBoardingHandler extends StatefulWidget {
   const OnBoardingHandler({super.key});
@@ -42,13 +42,14 @@ class _OnBoardingHandlerState extends State<OnBoardingHandler> {
                   child: TextButton(
                     onPressed: () async {
                       await prefs.setBool("onBoardingShown", true);
-                      NavManager.gotoAndRemoveAllPrevious(const HomePage());
+                      NavManager.gotoAndRemoveAllPrevious(const MainViewHandler());
                     },
-                    child: Text(
+                    child: const Text(
                       'Skip',
                       textAlign: TextAlign.right,
-                      style: GoogleFonts.lexend(
+                      style: TextStyle(
                         fontWeight: FontWeight.w500,
+                        fontFamily: 'Lexend',
                         color: Colors.black
                       ),
                     ),
@@ -96,8 +97,9 @@ class _OnBoardingHandlerState extends State<OnBoardingHandler> {
                             AppData.getOnboardingHeading(pageIndex),
                             key: ValueKey(pageIndex),
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.rancho(
+                            style: const TextStyle(
                               fontSize: 38,
+                              fontFamily: 'Rancho',
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -107,8 +109,10 @@ class _OnBoardingHandlerState extends State<OnBoardingHandler> {
                           Text(
                             AppData.getOnboardingText(pageIndex),
                             textAlign: TextAlign.center,
-                            style: GoogleFonts.lexend(
+                            style: const TextStyle(
+                              fontFamily: 'Lexend',
                               fontWeight: FontWeight.w400,
+
                             ),
                           ),
                         ],
@@ -159,7 +163,7 @@ class _OnBoardingHandlerState extends State<OnBoardingHandler> {
                           isLastPage ? 'Get Started' : 'Next',
                           key: ValueKey(isLastPage),
                           style:
-                              GoogleFonts.lexend(fontWeight: FontWeight.w500),
+                              const TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Lexend'),
                         ),
                       ),
                     )),

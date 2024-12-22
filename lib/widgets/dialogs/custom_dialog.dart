@@ -2,9 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'package:google_fonts/google_fonts.dart';
-
-
 class MyDialog extends StatelessWidget {
   const MyDialog({
     super.key,
@@ -17,7 +14,6 @@ class MyDialog extends StatelessWidget {
     required String message,
     required String buttonTitle,
     bool isLogin = false,
-
   }) {
     return showGeneralDialog<T>(
       context: context,
@@ -36,25 +32,27 @@ class MyDialog extends StatelessWidget {
           child: FadeTransition(
             opacity: curvedAnimation,
             child: ScaleTransition(
-                scale:
-                Tween<double>(begin: 0.5, end: 1.0).animate(curvedAnimation),
+                scale: Tween<double>(begin: 0.5, end: 1.0)
+                    .animate(curvedAnimation),
                 child: Dialog(
                   backgroundColor: Colors.transparent,
                   insetPadding: const EdgeInsets.all(20),
                   child: Container(
-                    padding: const EdgeInsets.only(top: 12,bottom: 4)+ const EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.only(top: 12, bottom: 4) +
+                        const EdgeInsets.symmetric(horizontal: 12),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(14), color: Colors.white),
+                        borderRadius: BorderRadius.circular(14),
+                        color: Colors.white),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const SizedBox(width: double.infinity),
                         Text(
                           title,
-                          style: GoogleFonts.lexend(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Lexend',
+                              fontSize: 18),
                         ),
                         const Divider(
                           color: Colors.grey,
@@ -73,78 +71,90 @@ class MyDialog extends StatelessWidget {
                         Text(
                           message,
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.nunito(
-                            fontSize: 14,
+                          style: const TextStyle(
                             fontWeight: FontWeight.w500,
+                            fontFamily: 'Lexend',
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 12.0),
-                          child: isLogin ? FilledButton.tonal(
-                            style: ButtonStyle(
-                                shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10))),
-                                backgroundColor: WidgetStateProperty.resolveWith(
-                                        (states) => Colors.red),
-                                foregroundColor: WidgetStateProperty.resolveWith(
-                                        (states) => Colors.white)),
-                            onPressed: onTap,
-                            child: Text(
-                              buttonTitle,
-                              style: GoogleFonts.lexend(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ) : Row(
-                            children: [
-                              Expanded(
-                                child: FilledButton.tonal(
+                          child: isLogin
+                              ? FilledButton.tonal(
                                   style: ButtonStyle(
-                                    shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10))),
-
-                                  ),
-                                  onPressed: (){
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text(
-                                    "Cancel",
-                                    style: GoogleFonts.lexend(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: FilledButton.tonal(
-                                  style: ButtonStyle(
-                                      shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10))),
-                                      backgroundColor: WidgetStateProperty.resolveWith(
+                                      shape: WidgetStatePropertyAll(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                      backgroundColor:
+                                          WidgetStateProperty.resolveWith(
                                               (states) => Colors.red),
-                                      foregroundColor: WidgetStateProperty.resolveWith(
+                                      foregroundColor:
+                                          WidgetStateProperty.resolveWith(
                                               (states) => Colors.white)),
                                   onPressed: onTap,
                                   child: Text(
                                     buttonTitle,
-                                    style: GoogleFonts.lexend(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Lexend',
+                                        fontSize: 15),
                                   ),
+                                )
+                              : Row(
+                                  children: [
+                                    Expanded(
+                                      child: FilledButton.tonal(
+                                        style: ButtonStyle(
+                                          shape: WidgetStatePropertyAll(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10))),
+                                        ),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text(
+                                          "Cancel",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'Lexend',
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    Expanded(
+                                      child: FilledButton.tonal(
+                                        style: ButtonStyle(
+                                            shape: WidgetStatePropertyAll(
+                                                RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10))),
+                                            backgroundColor:
+                                                WidgetStateProperty.resolveWith(
+                                                    (states) => Colors.red),
+                                            foregroundColor:
+                                                WidgetStateProperty.resolveWith(
+                                                    (states) => Colors.white)),
+                                        onPressed: onTap,
+                                        child: Text(
+                                          buttonTitle,
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontFamily: 'Lexend',
+                                              fontSize: 15),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
-                          ),
                         )
                       ],
                     ),
                   ),
-                )
-            ),
+                )),
           ),
         );
       },
