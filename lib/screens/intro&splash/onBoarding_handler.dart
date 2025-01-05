@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:travel_companion/screens/authentication/authentication_handler.dart';
 import 'package:travel_companion/services/app_data_service.dart';
@@ -163,7 +162,7 @@ class _OnBoardingHandlerState extends State<OnBoardingHandler> {
                           isLastPage ? 'Get Started' : 'Next',
                           key: ValueKey(isLastPage),
                           style:
-                              const TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Lexend'),
+                              const TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Lexend',color: Colors.white),
                         ),
                       ),
                     )),

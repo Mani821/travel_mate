@@ -104,7 +104,7 @@ class _HomeViewState extends State<HomeView> {
               final value = AppData.categories[index];
               return Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(10),
                     splashColor: primaryColor.withOpacity(0.3),
@@ -115,7 +115,7 @@ class _HomeViewState extends State<HomeView> {
                       });
                     },
                     child: AnimatedContainer(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 2),
                       duration: 200.ms,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -183,7 +183,7 @@ class _HomeViewState extends State<HomeView> {
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return GridView.builder(
-                    itemCount: 16,
+                    itemCount: 6,
                     padding: const EdgeInsets.all(8),
                     gridDelegate:
                     const SliverGridDelegateWithFixedCrossAxisCount(
@@ -194,7 +194,7 @@ class _HomeViewState extends State<HomeView> {
                       return Container(
                         decoration: BoxDecoration(
                             color:
-                            Colors.primaries[index].withOpacity(0.35),
+                            Colors.grey.withOpacity(0.35),
                             borderRadius: BorderRadius.circular(10)),
                       )
                           .animate(onPlay: (p) => p.repeat())

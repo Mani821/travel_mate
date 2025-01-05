@@ -30,8 +30,9 @@ class _SettingViewState extends State<SettingView> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ),
             CupertinoListSection.insetGrouped(
-              margin: EdgeInsets.zero,
-              backgroundColor: Colors.white,
+              margin: const EdgeInsets.all(2),
+              backgroundColor: const Color(0xFFF6F8F9),
+              
               children: [
                 CupertinoListTile(
                   leading: SvgPicture.asset(

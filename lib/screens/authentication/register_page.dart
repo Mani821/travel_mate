@@ -28,9 +28,9 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
+        statusBarColor: Color(0xFFF6F8F9),
         statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white,
+        systemNavigationBarColor: Color(0xFFF6F8F9),
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
       child: Scaffold(
@@ -84,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               MyTextField(
                 controller: locationController,
-                hint: 'Enter your location',
+                hint: 'Your location',
                 readOnly: true,
                 onTap: () async {
                   final loc = await getUserLocation();
@@ -117,7 +117,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     )
                   ],
                 ),
-              )
+              ),
+              const SizedBox(height: 40),
             ],
           ),
         ),

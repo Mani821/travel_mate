@@ -59,10 +59,10 @@ class AppTheme {
           backgroundColor: const Color(0xFFF6F8F9),
           elevation: 0,
           centerTitle: true,
-          systemOverlayStyle:  SystemUiOverlayStyle(
-            statusBarColor: backgroundColor,
+          systemOverlayStyle:  const SystemUiOverlayStyle(
+            statusBarColor:  Color(0xFFF6F8F9),
             statusBarIconBrightness: Brightness.dark,
-            systemNavigationBarColor: backgroundColor,
+            systemNavigationBarColor: Color(0xFFF6F8F9),
             systemNavigationBarIconBrightness: Brightness.dark,
           ),
           titleTextStyle: GoogleFonts.lexend(

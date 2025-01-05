@@ -13,8 +13,8 @@ class AuthenticationHandler extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light,
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: Colors.transparent
       ),
       child: Scaffold(

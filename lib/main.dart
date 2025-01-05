@@ -20,7 +20,6 @@ void main()async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-
 final prefManager = PrefManager();
 
 class MyApp extends StatelessWidget {
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const SplashPage(),
+      home:  const SplashPage(),
       navigatorKey: navigatorKey,
     );
   }

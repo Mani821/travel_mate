@@ -27,9 +27,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
+        statusBarColor: Color(0xFFF6F8F9),
         statusBarIconBrightness: Brightness.dark,
-        systemNavigationBarColor: Colors.white,
+        systemNavigationBarColor: Color(0xFFF6F8F9),
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
       child: Form(
